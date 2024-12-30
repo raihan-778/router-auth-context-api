@@ -49,7 +49,7 @@ const Login = () => {
           <p>
             new here?Please{" "}
             <span className="text-purple-600 underline font-semibold">
-              <Link>Sign Up</Link>
+              <Link to="/signUP">Sign Up</Link>
             </span>
           </p>
         </div>

@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProviders";
 
 const Navbar = () => {
+  const { logOut, user } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOut();
+  };
   const nabLinks = (
     <>
-      <NavLink to="home">Home</NavLink>
-      <NavLink to="/login">Login</NavLink>
-      <NavLink to="/signUP">Sign UP</NavLink>
+      <li>
+        <NavLink to="home">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/login">Login</NavLink>
+      </li>
+      <li>
+        <NavLink to="/signUP">Sign UP</NavLink>
+      </li>
     </>
   );
   return (
@@ -33,21 +45,27 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <li>{nabLinks}</li>
+            {nabLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <a className="btn btn-ghost text-xl">Router-auth-context-api</a>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>{nabLinks}</a>
-          </li>
-        </ul>
+      <div className="navbar-center hidden ">
+        <ul className="menu menu-horizontal lg:flex px-1">{nabLinks}</ul>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
-      </div>
+      {user?.email ? (
+        <>
+          <p>{user?.email}</p>
+
+          <div onClick={handleLogout} className="navbar-end">
+            <a className="btn">LogOut</a>
+          </div>
+        </>
+      ) : (
+        <div className="navbar-end">
+          <a className="btn">Login</a>
+        </div>
+      )}
     </div>
   );
 };

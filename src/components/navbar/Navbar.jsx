@@ -10,10 +10,12 @@ const Navbar = () => {
   };
   const nabLinks = (
     <>
+      {" "}
       <li>
         <NavLink to="home">Home</NavLink>
       </li>
       <li>
+        {" "}
         <NavLink to="/login">Login</NavLink>
       </li>
       <li>
@@ -48,10 +50,12 @@ const Navbar = () => {
             {nabLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">Router-auth-context-api</a>
+        <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
-      <div className="navbar-center hidden ">
-        <ul className="menu menu-horizontal lg:flex px-1">{nabLinks}</ul>
+      {/* <div className="navbar-center hidden ">
+        <ul className="menu menu-horizontal lg:flex px-1"> */}
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal px-1">{nabLinks}</ul>
       </div>
       {user?.email ? (
         <>

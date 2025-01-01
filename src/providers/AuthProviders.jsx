@@ -40,7 +40,7 @@ const AuthProviders = ({ children }) => {
       setLoading(false);
       console.log("user state using useEffect from auth Provider", currentUser);
     });
-    return unsubscribe;
+    return () => unsubscribe;
   }, []);
 
   const authInfo = { user, logOut, signInUser, createUser, loading };
